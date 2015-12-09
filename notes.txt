@@ -1,0 +1,14 @@
+1) Work out difference in effectiveness between gaussian 3x3 and 5x5 using the following:
+  - simple (gradient)
+  - sobel
+  - roberts
+  - prewitt
+  - laplacian
+  - first-order-gaussian (from lab 3)
+  - canny
+
+    a) Also maybe try several pass gauss
+
+2) Work out the best threshold value between all filters with the mosteffective gaussian blur from (1), including LoG
+
+3) Plot graphs of several thresholds of the best filter from (2)
