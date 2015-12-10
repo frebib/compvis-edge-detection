@@ -1,0 +1,342 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Proceedings of the National Academy of Sciences (PNAS)
+% LaTeX Template
+% Version 1.0 (19/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% The PNAStwo class was created and is owned by PNAS:
+% http://www.pnas.org/site/authors/LaTex.xhtml
+% This template has been modified from the blank PNAS template to include
+% examples of how to insert content and drastically change commenting. The
+% structural integrity is maintained as in the original blank template.
+%
+% Original header:
+%% PNAStmpl.tex
+%% Template file to use for PNAS articles prepared in LaTeX
+%% Version: Apr 14, 2008
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+% BASIC CLASS FILE
+%------------------------------------------------
+
+%% PNAStwo for two column articles is called by default.
+%% Uncomment PNASone for single column articles. One column class
+%% and style files are available upon request from pnas@nas.edu.
+
+%\documentclass{pnasone}
+\documentclass{article}
+
+%------------------------------------------------
+% POSITION OF TEXT
+%------------------------------------------------
+
+%% Changing position of text on physical page:
+%% Since not all printers position
+%% the printed page in the same place on the physical page,
+%% you can change the position yourself here, if you need to:
+
+% \advance\voffset -.5in % Minus dimension will raise the printed page on the 
+                         %  physical page; positive dimension will lower it.
+
+%% You may set the dimension to the size that you need.
+
+%------------------------------------------------
+% GRAPHICS STYLE FILE
+%------------------------------------------------
+
+%% Requires graphics style file (graphicx.sty), used for inserting
+%% .eps/image files into LaTeX articles.
+%% Note that inclusion of .eps files is for your reference only;
+%% when submitting to PNAS please submit figures separately.
+
+%% Type into the square brackets the name of the driver program 
+%% that you are using. If you don't know, try dvips, which is the
+%% most common PC driver, or textures for the Mac. These are the options:
+
+% [dvips], [xdvi], [dvipdf], [dvipdfm], [dvipdfmx], [pdftex], [dvipsone],
+% [dviwindo], [emtex], [dviwin], [pctexps], [pctexwin], [pctexhp], [pctex32],
+% [truetex], [tcidvi], [vtex], [oztex], [textures], [xetex]
+
+\usepackage{graphicx}
+
+%------------------------------------------------
+% OPTIONAL POSTSCRIPT FONT FILES
+%------------------------------------------------
+
+%% PostScript font files: You may need to edit the PNASoneF.sty
+%% or PNAStwoF.sty file to make the font names match those on your system. 
+%% Alternatively, you can leave the font style file commands commented out
+%% and typeset your article using the default Computer Modern 
+%% fonts (recommended). If accepted, your article will be typeset
+%% at PNAS using PostScript fonts.
+
+% Choose PNASoneF for one column; PNAStwoF for two column:
+%\usepackage{PNASoneF}
+%\usepackage{PNAStwoF}
+
+%------------------------------------------------
+% ADDITIONAL OPTIONAL STYLE FILES
+%------------------------------------------------
+
+%% The AMS math files are commonly used to gain access to useful features
+%% like extended math fonts and math commands.
+
+\usepackage{amssymb,amsfonts,amsmath}
+
+%------------------------------------------------
+% OPTIONAL MACRO FILES
+%------------------------------------------------
+
+%% Insert self-defined macros here.
+%% \newcommand definitions are recommended; \def definitions are supported
+
+%\newcommand{\mfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+%\def\s{\sigma}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND AUTHORS
+%----------------------------------------------------------------------------------------
+
+\title{Edge detection methods for the identification of HEp-2 cell immunofluorescence in detecting anti-nuclear antibodies} % For titles, only capitalize the first letter
+
+%------------------------------------------------
+
+%% Enter authors via the \author command.  
+%% Use \affil to define affiliations.
+%% (Leave no spaces between author name and \affil command)
+
+%% Note that the \thanks{} command has been disabled in favor of
+%% a generic, reserved space for PNAS publication footnotes.
+
+%% \author{<author name>
+%% \affil{<number>}{<Institution>}} One number for each institution.
+%% The same number should be used for authors that
+%% are affiliated with the same institution, after the first time
+%% only the number is needed, ie, \affil{number}{text}, \affil{number}{}
+%% Then, before last author ...
+%% \and
+%% \author{<author name>
+%% \affil{<number>}{}}
+
+%% For example, assuming Garcia and Sonnery are both affiliated with
+%% Universidad de Murcia:
+%% \author{Roberta Graff\affil{1}{University of Cambridge, Cambridge,
+%% United Kingdom},
+%% Javier de Ruiz Garcia\affil{2}{Universidad de Murcia, Bioquimica y Biologia
+%% Molecular, Murcia, Spain}, \and Franklin Sonnery\affil{2}{}}
+
+\author{1146273\affil{1}{University of Birmingham}
+\and 1467414\affil{1}{}}
+
+%----------------------------------------------------------------------------------------
+
+\maketitle % The \maketitle command is necessary to build the title page
+
+\begin{article}
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT, KEYWORDS AND ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+Serological testing for anti-nuclear antibodies by immunofluorescence is yet to be standardised and remains a subjective exercise liable to high inter- and intra-laboratory variation. The use of digital imaging techniques in the evaluative process can improve objectivity by entrusting algorithms with the task of discerning edges in the fluoresced image. To address this hypothesis we investigated the efficacy of various edge detectors known to the field of computational vision research. Application of ROC analysis to the results generated quantitative feedback regarding the efficacy of each edge detection method, suggesting METHOD X to be the most concrete standard by which to detect immunofluorescence. 
+\end{abstract}
+
+%------------------------------------------------
+
+\keywords{Immunofluorescence | Edge detection} % When adding keywords, separate each term with a straight line: |
+
+%------------------------------------------------
+
+
+
+%% Optional for entering abbreviations, separate the abbreviation from
+%% its definition with a comma, separate each pair with a semicolon:
+%% for example:
+%% \abbreviations{SAM, self-assembled monolayer; OTS,
+%% octadecyltrichlorosilane}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATION CONTENT
+%----------------------------------------------------------------------------------------
+
+%% The first letter of the article should be drop cap: \dropcap{} e.g.,
+%\dropcap{I}n this article we study the evolution of ''almost-sharp'' fronts
+
+\section{Introduction}
+
+\dropcap{T}he purpose of this experiment was to objectively assess the efficacy of different edge detectors used in immunofluorescence. \par
+%-------------------------------
+The methods investigated were; simple gradient, Roberts, Sobel, first order Gaussian, Laplacian and the Laplacian of Gaussian. Application of thresholding in post-processing was used to evaluate the efficacy of each method by comparing the edge points identified with those present in the pre-edge-detected images which were provided in the laboratory environment. ROC analysis was used to determine both the sensitivity and specificity of each edge detection method. \par
+%-------------------------------
+Edge detection looks for changes in the intensity (i.e. brightness) of an image. The methods can be divided into two general groups: those which search for changes in the first derivative (eg gradient magnitude) and those which search for zero-crossings in the second derivative. \par
+%----------------------------------
+Convolving the original image with a mask (also called a ‘filter’) will identify the rate of change for a given pixel, and this must be done in both the x and y axes. The magnitude (an approximation thereof) is then calculated with respect to the other pixels in the image. Commonly a noise filtering method will be applied in advance of edge detection, giving an exaggerated or more clearly weighted numerical representation of an image which is therefore said to contain less ‘noise’. Examples of noise filtering include a linear filter such as a mean filter or Gaussian filtering. \par
+
+%------------------------------------------------
+
+\section{Method and materials}
+
+We were provided with three bitmap images of fluorescing cells, along with separate images of their manually detected edges. These were to act as our target edge-detection results. \par
+%------------------------------------------
+The (original) images were first converted to grayscale in order to maximise their intensity contrast and provide us with intensity images (data matrices).This simplified the task of edge detection (i.e. identifying changes of intensity in the image) as it made the various strengths of edges more distinct. The images were then inverted to leave black cells on a white background. 
+
+\subsection{Noise reduction}
+
+Gaussian smoothing was then applied to the grayscale images as a method of noise reduction. \par
+%--------------------------
+This is a low-pass filtering technique and so suppresses high-frequency detail (i.e. noise, but also, potentially, edges) whilst preserving the low frequency parts of the image. This served to reduce the chances that a method of edge detection would be compromised by random or non-essential details present in the images. We applied two one-dimensional Gaussian filters in succession, as opposed to a single two-dimensional filter, for reasons of computational efficiency. Using filters of greater dimensions acted to preserve the local area for averaging purposes. 
+
+\subsection{Edge detection}
+
+The various edge detection filters were then convolved with the original images. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
+
+\subsection{Thresholding}
+
+Finally, thresholds were determined for the processed images. \par
+%-------------------
+This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. \par
+%----------------------
+At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. \par
+%----------------------------------------
+From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for \textit{‘10905 JL Edges.bmp’}, fig. 1), 9\% (for \textit{‘43590 AM Edges.bmp’}, fig. 2) and 10\% (for \textit{‘9343 AM Edges.bmp’}, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment. Using these as our guide we set thresholds for Images 1, 2 and 3 as A\%, B\% and C\%, respectively. 
+
+%------------------------------------------------
+
+\section{Results}
+
+pictures and fun stuff here
+
+
+%------------------------------------------------
+
+\section{Discussion}
+
+Issues of quantitative accuracy remain pressing regarding the imaging of bioluminescent and fluorescing systems (Shelley L. Taylor, 2015). \par
+%--------------------------------------
+The issues of how best to minimise false positives (i.e. noise) and preserve image resolution in fluorescence imaging have been explored by Dedecker et al. who are in favour of the ‘superresolution’ technique. This involves reversibly photoswitching fluorescing proteins and thereby generating a sequence of images over time. A superresolution image can then be extracted using quantitative analysis of the rate of change of fluorescence, promising an image of significantly higher resolution and with reduced noise (Peter Dedekcer, 2012) . This may have produced more favourable results in the case of IMAGE X which exhibited significant background noise and loss of resolution post-processing.\par
+%---------------------------------------------------------
+Also of interest is bioluminescence tomography which sections the (3D) image and then reconstructs it. This is reported to produce significantly more stable (i.e. more consistent) luminescence, particularly with respect to the depth of the sample being processed, helping to accurately home-in on the source of luminescence. Given that we are concerned with serological testing, this may well be an important option to explore, opening up the possibility of 3D sampling. Bioluminescence tomography ‘…therefore has the potential to both increase the amount and the accuracy of quantitative data attained by luminescence imaging’ (James A Guggenheim, 2014).
+\par
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+%% PNAS does not support submission of supporting .tex files such as BibTeX.
+%% Instead all references must be included in the article .tex document. 
+%% If you currently use BibTeX, your bibliography is formed because the 
+%% command \verb+\bibliography{}+ brings the <filename>.bbl file into your
+%% .tex document. To conform to PNAS requirements, copy the reference listings
+%% from your .bbl file and add them to the article .tex file, using the
+%% bibliography environment described above.  
+
+%%  Contact pnas@nas.edu if you need assistance with your
+%%  bibliography.
+
+% Sample bibliography item in PNAS format:
+%% \bibitem{in-text reference} comma-separated author names up to 5,
+%% for more than 5 authors use first author last name et al. (year published)
+%% article title  {\it Journal Name} volume #: start page-end page.
+%% ie,
+% \bibitem{Neuhaus} Neuhaus J-M, Sitcher L, Meins F, Jr, Boller T (1991) 
+% A short C-terminal sequence is necessary and sufficient for the
+% targeting of chitinases to the plant vacuole. 
+% {\it Proc Natl Acad Sci USA} 88:10362-10366.
+
+
+%% Enter the largest bibliography number in the facing curly brackets
+%% following \begin{thebibliography}
+
+\begin{thebibliography}{3}
+\bibitem{GH}
+J. ~Guggenheim, H. ~Basevi, Hector; H. ~Dehghani,I. ~ Styles, J. ~Frampton, {\em Bioluminescence tomography improves quantitative accuracy for pre-clinical imaging}, International Society for Optics and Photonics, 87990G-87990G-6. (2014).
+
+\bibitem{}
+P. ~Dedecker, G.C.H. ~Mo, T. ~Dertinger and J. ~Zhang , {\em Widely accessible method for superresolution fluorescence imaging of living systems}, Proceedings of the National Academy of Sciences of the United States of America., 10909-10914. (2012),
+  pp.~374--398.
+
+\bibitem{CLAcha1}
+R.R.~Coifman and S.~Lafon, {\em Diffusion maps}, Appl. Comp. Harm. Anal.,
+  21 (2006), pp.~5--30.
+\end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\end{article}
+
+%----------------------------------------------------------------------------------------
+%	FIGURES AND TABLES
+%----------------------------------------------------------------------------------------
+
+%% Adding Figure and Table References
+%% Be sure to add figures and tables after \end{article}
+%% and before \end{document}
+
+%% For figures, put the caption below the illustration.
+%%
+%% \begin{figure}
+%% \caption{Almost Sharp Front}\label{afoto}
+%% \end{figure}
+
+\begin{figure}[h]
+\centerline{\includegraphics[width=0.4\linewidth]{placeholder.jpg}}
+\caption{Figure caption}\label{placeholder}
+\end{figure}
+
+%% For Tables, put caption above table
+%%
+%% Table caption should start with a capital letter, continue with lower case
+%% and not have a period at the end
+%% Using @{\vrule height ?? depth ?? width0pt} in the tabular preamble will
+%% keep that much space between every line in the table.
+
+%% \begin{table}
+%% \caption{Repeat length of longer allele by age of onset class}
+%% \begin{tabular}{@{\vrule height 10.5pt depth4pt  width0pt}lrcccc}
+%% table text
+%% \end{tabular}
+%% \end{table}
+
+\begin{table}[h]
+\caption{Table caption}\label{sampletable}
+\begin{tabular}{l l l}
+\hline
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\hline
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\hline
+\end{tabular}
+\end{table}
+
+%% For two column figures and tables, use the following:
+
+%% \begin{figure*}
+%% \caption{Almost Sharp Front}\label{afoto}
+%% \end{figure*}
+
+%% \begin{table*}
+%% \caption{Repeat length of longer allele by age of onset class}
+%% \begin{tabular}{ccc}
+%% table text
+%% \end{tabular}
+%% \end{table*}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
