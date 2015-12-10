@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[none]{hyphenat}
+\usepackage{multicol}
+\usepackage{titlesec}
+
+\titleformat*{\section}{\large\bfseries}
+
+\title {\vspace{-3ex}Edge detection methods for the identification of HEp-2 cell immunofluorescence in detecting anti-nuclear antibodies}
+\author {1146741 \and 1467414}
+
+\begin{document}
+\maketitle
+\begin{multicols*}{2}
+
+
+\section*{Abstract}
+\textbf{Serological testing for anti-nuclear antibodies by immunofluorescence is yet to be standardised and remains a subjective exercise liable to high inter- and intra-laboratory variation. The use of digital imaging techniques in the evaluative process can improve objectivity by entrusting algorithms with the task of discerning edges in the fluoresced image. To address this hypothesis we investigated the efficacy of various edge detectors known to the field of computational vision research. Application of ROC analysis to the results generated quantitative feedback regarding the efficacy of each edge detection method, suggesting METHOD X to be the most concrete standard by which to detect immunofluorescence.}
+
+\section*{Introduction}
+
+The purpose of this experiment was to objectively assess the efficacy of different edge detectors used in immunofluorescence. The methods investigated were; simple gradient, Roberts, Sobel, first order Gaussian, Laplacian and the Laplacian of Gaussian. Application of thresholding in post- processing was used to evaluate the efficacy of each method by comparing the edge points identified with those present in the pre-edge-detected images which were provided in the laboratory environment. ROC analysis was used to determine both the sensitivity and specificity of each edge detection method. 
+
+Edge detection looks for changes in the intensity (i.e. brightness) of an image. The methods can be divided into two general groups: those which search for changes in the first derivative (eg gradient magnitude) and those which search for zero-crossings in the second derivative. 
+
+Convolving the original image with a mask (also called a ‘filter’) will identify the rate of change for a given pixel, and this must be done in both the x and y axes. The magnitude (or an approximation thereof) is then calculated with respect to the other pixels in the image. Commonly a noise filtering method will be applied in advance of edge detection, giving an exaggerated or more clearly weighted numerical representation of an image which is therefore said to contain less ‘noise’. Examples of noise filtering include a linear filter such as a mean filter or Gaussian filtering.
+
+\section*{Method and Materials}
+
+We were provided with three bitmap images of fluorescing cells, along with their manually detected edges. The experiments were carried out in MATLAB in the School of Computer Science laboratory UG04.
+The (original) images were first converted to grayscale in order to maximise their intensity contrast and provide us with intensity images (data matrices). This simplified the task of edge detection (i.e. identifying changes of intensity in the image) as it made the various strengths of edges more distinct.
+
+% INVERT SO THAT YOU HAVE BLACK LINES ON WHITE!!!
+
+Next, thresholds were determined on a case-by-case basis owing to the idiosyncrasies of the three images. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be X\%, Y\% and Z\%, respectively. Using these as our guide we set thresholds for X, Y and Z as A\%, B\% and C\%, respectively.
+
+Gaussian smoothing was then applied to the grayscale images as a method of noise reduction. This served to reduce the chances that a method of edge detection would be compromised by random or non-essential details present in the images.
+
+The edge detection filters were then convolved with the original images using MATLAB’s conv function. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
+
+\end{multicols*}
+
+\end{document}

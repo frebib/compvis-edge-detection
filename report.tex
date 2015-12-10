@@ -4,6 +4,8 @@
 \usepackage[none]{hyphenat}
 \usepackage{multicol}
 \usepackage{titlesec}
+\usepackage{graphicx} 
+\graphicspath{ {test-images/} } 
 
 \titleformat*{\section}{\large\bfseries}
 
@@ -28,16 +30,34 @@ Convolving the original image with a mask (also called a ‘filter’) will iden
 
 \section*{Method and Materials}
 
-We were provided with three bitmap images of fluorescing cells, along with their manually detected edges. The experiments were carried out in MATLAB in the School of Computer Science laboratory UG04.
-The (original) images were first converted to grayscale in order to maximise their intensity contrast and provide us with intensity images (data matrices). This simplified the task of edge detection (i.e. identifying changes of intensity in the image) as it made the various strengths of edges more distinct.
+We were provided with three bitmap images of fluorescing cells, along with separate images of their manually detected edges. These were to act as our target edge-detection results.
+The (original) images were first converted to grayscale in order to maximise their intensity contrast and provide us with intensity images (data matrices).This simplified the task of edge detection (i.e. identifying changes of intensity in the image) as it made the various strengths of edges more distinct. The images were then inverted to leave black cells on a white background. 
 
-% INVERT SO THAT YOU HAVE BLACK LINES ON WHITE!!!
+\section*{Noise reduction}
 
-Next, thresholds were determined on a case-by-case basis owing to the idiosyncrasies of the three images. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be X\%, Y\% and Z\%, respectively. Using these as our guide we set thresholds for X, Y and Z as A\%, B\% and C\%, respectively.
+Gaussian smoothing was then applied to the grayscale images as a method of noise reduction. This is a low-pass filtering technique and so suppresses high-frequency detail (i.e. noise, but also, potentially, edges) whilst preserving the low frequency parts of the image. This served to reduce the chances that a method of edge detection would be compromised by random or non-essential details present in the images. We applied two one-dimensional Gaussian filters in succession, as opposed to a single two-dimensional filter, for reasons of computational efficiency. Using filters of greater dimensions acted to preserve the local area for averaging purposes. 
 
-Gaussian smoothing was then applied to the grayscale images as a method of noise reduction. This served to reduce the chances that a method of edge detection would be compromised by random or non-essential details present in the images.
+\section*{Edge detection}
 
-The edge detection filters were then convolved with the original images using MATLAB’s conv function. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
+The various edge detection filters were then convolved with the original images. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
+
+\section*{Thresholding}
+
+Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8% (for ‘10905 JL Edges.bmp’, fig. 1), 9% (for ‘43590 AM Edges.bmp’, fig. 2) and 10% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment. 
+
+\section*{Results}
+
+\section*{Discussion}
+
+Issues of quantitative accuracy remain pressing regarding the imaging of bioluminescent and fluorescing systems (Shelley L. Taylor, 2015). 
+The issues of how best to minimise false positives (i.e. noise) and preserve image resolution in fluorescence imaging have been explored by Dedecker et al. who are in favour of the ‘superresolution’ technique. This involves reversibly photoswitching fluorescing proteins and thereby generating a sequence of images over time. A superresolution image can then be extracted using quantitative analysis of the rate of change of fluorescence, promising an image of significantly higher resolution and with reduced noise (Peter Dedekcer, 2012) . This may have produced more favourable results in the case of IMAGE X which exhibited significant background noise and loss of resolution post-processing.
+Also of interest is bioluminescence tomography which sections the (3D) image and then reconstructs it. This is reported to produce significantly more stable (i.e. more consistent) luminescence, particularly with respect to the depth of the sample being processed, helping to accurately home-in on the source of luminescence. Given that we are concerned with serological testing, this may well be an important option to explore, opening up the possibility of 3D sampling. Bioluminescence tomography ‘…therefore has the potential to both increase the amount and the accuracy of quantitative data attained by luminescence imaging’ (James A Guggenheim, 2014).
+
+\section*{References}
+
+James A Guggenheim, H. R. (2014). Bioluminescence tomography improves quantitative accuracy for pre-clinical imaging. International Society for Optics and Photonics, 87990G-87990G-6.
+Peter Dedekcer, G. C. (2012). Widely accessible method for superresolution fluorescence imaging of living systems. Proceedings of the National Academy of Sciences of the United States of America, 10909-10914.
+Shelley L. Taylor, T. A. (2015). Accounting for systematic errors in bioluminescence imaging to improve quantitative accuracy. Diffuse Optical Imaging V, 10.1117/12.2183756.
 
 \end{multicols*}
 
