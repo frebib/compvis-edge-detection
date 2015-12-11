@@ -306,7 +306,7 @@ The edge detectors used in the following test are:
 
 As can be seen from Figure~\ref{fig:diff}. of the actual result vs the 'target' image, there was little overlap between what was detected and what was actually discerned to be an edge. Anything represented by \emph{pink} is a real edge, not detected; whilst anything represented by \emph{green} was detected but is not, in fact, a real edge.
 
-The probable main cause for this behaviour was the choice threshold. The same test conducted with a reduced threshold of only \textbf{0.2\% / 0.002} produced a closer to expected ROC value denoted by the \textcolor{red}{red X} in Figure~\ref{fig:filtergraph}.
+The probable main cause for this behaviour was the choice threshold. The same test conducted with a reduced threshold of only \textbf{2\% / 0.02} produced a closer to expected ROC value denoted by the \textcolor{red}{red X} in Figure~\ref{fig:filtergraph}.
 
 \subsection*{Noise Reduction Conclusion}
 We can conclude from the test conducted that increased smoothing filter size and/or repitition changes the outcome of the ROC, tending towards higher specificity but a lower sensitivity. This can be likened to traversing along the \emph{convex hull} towards (0, 0).
@@ -373,7 +373,7 @@ Each curve represents the ROC values between thresholds of \textbf{0} and \textb
     \vspace{0.6em}
 \end{floatfig}
 
-The closest point on the unsmoothed curve is with a threshold of \textbf{0.215} or \textbf {2.15\%}. Surprisingly the single and double pass gaussian smoothed variants have a slightly lower specificity with the 2-pass producing a significantly worse result relative to the other two.
+The closest point on the unsmoothed curve is with a threshold of \textbf{0.0215} or \textbf {2.15\%}. Surprisingly the single and double pass gaussian smoothed variants have a slightly lower specificity with the 2-pass producing a significantly worse result relative to the other two.
 
 \section*{Thresholding}
 
