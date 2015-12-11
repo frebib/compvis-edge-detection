@@ -323,6 +323,55 @@ We can conclude from the test conducted that increased smoothing filter size and
 
 The various edge detection filters were then convolved with the original images. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
 
+The following curves are those of 3 variations of \emph{10905 JL.bmp}
+
+\vspace{.6em}
+\noindent
+\begin{floatfig}
+    \resizeToWidth{
+        \begin{tikzpicture}
+            \begin{axis}[
+                xlabel={1 - Specificity \% [FPR]},
+                ylabel={Sensitivity \% [TPR]},
+                width=\pgfplotswidth * 0.9,
+                xmin=0, xmax=25,
+                ymin=75, ymax=100,
+                grid style=dashed,
+                yticklabel style={
+                    align=right,
+                    inner sep=0,
+                    xshift=-0.3em,
+                }
+            ]
+
+            \pgfplotstableread{test-images/cells2.txt}{\cellstwo}
+            \pgfplotstableread{test-images/cells2g5.txt}{\cellstwogfive}
+            \pgfplotstableread{test-images/cells2g5p2.txt}{\cellstwogfiveptwo}
+            \addplot[
+                cyan,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\cellstwo};
+            \addplot[
+                blue,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\cellstwogfive};
+            \addplot[
+                purple,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\cellstwogfiveptwo};
+            \end{axis}
+        \end{tikzpicture}
+    }{\columnwidth}
+
+    \vspace{-1em}
+    \centering
+        \captionof{figure}{\emph{Noise filtering on edge detection}\label{fig:filtergraph}}
+    \vspace{0.6em}
+\end{floatfig}
+
 \section*{Thresholding}
 
 Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for ‘10905 JL Edges.bmp’, fig. 1), 9\% (for ‘43590 AM Edges.bmp’, fig. 2) and 10\% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment.
