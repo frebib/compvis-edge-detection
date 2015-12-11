@@ -323,7 +323,16 @@ We can conclude from the test conducted that increased smoothing filter size and
 
 The various edge detection filters were then convolved with the original images. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
 
-The following curves are those of 3 variations of \emph{10905 JL.bmp}
+The following curves are those of 3 variations of \emph{10905 JL} with  First-Derivative Gaussian detector
+
+\vspace{-0.4em}
+\begin{itemize}[noitemsep]
+    \item No Smoothing - Cyan
+    \item 1 Pass Gaussian 5x5 - Blue
+    \item 2 Pass Gaussian 5x5 - Purple
+\end{itemize}
+
+Each curve represents the ROC values between thresholds of \textbf{0} and \textbf{0.1} or \textbf{10\%} reaching right from one corner on the \textit{line of no discrimination} to the other in a large arc.
 
 \vspace{.6em}
 \noindent
@@ -371,6 +380,8 @@ The following curves are those of 3 variations of \emph{10905 JL.bmp}
         \captionof{figure}{\emph{Noise filtering on edge detection}\label{fig:filtergraph}}
     \vspace{0.6em}
 \end{floatfig}
+
+The closest point on the unsmoothed curve is with a threshold of \textbf{0.215} or \textbf {2.15\%}. Surprisingly the single and double pass gaussian smoothed variants have a slightly lower specificity with the 2-pass producing a significantly worse result relative to the other two.
 
 \section*{Thresholding}
 
