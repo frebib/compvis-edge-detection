@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 
-\usepackage[margin=2.1cm]{geometry}
+\usepackage[margin=1.9cm]{geometry}
 \usepackage[none]{hyphenat}
 \usepackage{multicol, caption}
 \usepackage{titlesec}
@@ -301,11 +301,11 @@ The edge detectors used in the following test are:
 
 \noindent Increasing the strength and/or repitions of any of the filters used affects every detector, increasing the specificity. Applicable only to a selection of the filter-detector combinations, an increased noise-reduction has an adverse effect on the sensitivity of the image, more specifically the \emph{Laplacian} edge detector with \emph{2-Pass 5x5 Gaussian} smoothing filter.
 
-
+\vspace{.4em}
 \begin{floatfig}
     \centering
         \adjincludegraphics[
-            width=\textwidth,
+            width=.9\textwidth,
             trim={{.2\width} {.32\height} {.2\width} {.32\height}},
             clip
         ]{diff-lapl-c1-gaus5-p2.png}
