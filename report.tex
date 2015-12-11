@@ -80,36 +80,6 @@ Gaussian smoothing was then applied to the grayscale images as a method of noise
 We applied two one-dimensional Gaussian filters in succession, as opposed to a single two-dimensional filter, for reasons of computational efficiency. Using filters of greater dimensions acted to preserve the local area for averaging purposes. For comparison, we also applied each filter in two passes in order to compare the effectiveness of increased noise suppression against a selection of detectors.
 
 Each edge detector was applied in turn to each low-pass filtered image to produce the results in Figure 1.
-The edge detectors used in the following test are:
-
-\vspace{-0.3em}
-
-\begin{multicols*}{2}
-    \begin{itemize}[noitemsep]
-        \item Gradient
-        \item Sobel
-        \item Roberts
-        \item Laplacian
-        \item First Derivative Gaussian
-        \item Canny
-    \end{itemize}
-\end{multicols*}
-
-\noindent It should be noted that whilst the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, this was not the aim at this stage of the experiment.  The aim here was to show the relative difference in \emph{noise reduction} techniques in advance of applying each detector. Instead, a fixed threshold of \textbf{0.01} or \textbf{1\%} was decided on for use across the board to eliminate external factors from influencing the test.
-
-\section*{Thresholding}
-
-Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for ‘10905 JL Edges.bmp’, fig. 1), 9\% (for ‘43590 AM Edges.bmp’, fig. 2) and 10\% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment.
-
-\section*{Results}
-
-For image 9343 AM, the noisiest of the three, a sequence of noise-reduction filters was necessary to achieve optimal smoothing:
-
-\begin{itemize}[noitemsep]
-    \item No filter
-    \item 3x3 Gaussian Filter (1 \& 2 Pass)
-    \item 5x5 Gaussian Filter (1 \& 2 Pass)
-\end{itemize}
 
 \vspace{.6em}
 \noindent
@@ -304,6 +274,37 @@ For image 9343 AM, the noisiest of the three, a sequence of noise-reduction filt
         \captionof{figure}{\emph{Noise filtering on edge detection\label{fig:filtergraph}}}
     \vspace{0.6em}
 \end{floatfig}
+
+The edge detectors used in this test are:
+
+\vspace{-0.3em}
+
+\begin{multicols*}{2}
+    \begin{itemize}[noitemsep]
+        \item Gradient
+        \item Sobel
+        \item Roberts
+        \item Laplacian
+        \item First Derivative Gaussian
+        \item Canny
+    \end{itemize}
+\end{multicols*}
+
+\noindent It should be noted that whilst the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, this was not the aim at this stage of the experiment.  The aim here was to show the relative difference in \emph{noise reduction} techniques in advance of further configuring each detection method for each image. A fixed threshold of \textbf{0.01} or \textbf{1\%} was used here.
+
+\section*{Thresholding}
+
+Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for ‘10905 JL Edges.bmp’, fig. 1), 9\% (for ‘43590 AM Edges.bmp’, fig. 2) and 10\% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment.
+
+\section*{Results}
+
+For image 9343 AM, the noisiest of the three, a sequence of noise-reduction filters was necessary to achieve optimal smoothing:
+
+\begin{itemize}[noitemsep]
+    \item No filter
+    \item 3x3 Gaussian Filter (1 \& 2 Pass)
+    \item 5x5 Gaussian Filter (1 \& 2 Pass)
+\end{itemize}
 
 \noindent Increasing the strength and/or repition(s) of any of the smoothing filters used affected the ROC analysis of every edge detector by increasing the specificity. Applicable to only a selection of the filter-detector combinations, an increased level of noise-reduction had an adverse effect on the sensitivity of the output image, most noticeably the \emph{Laplacian} edge detector when paired with the \emph{2-Pass 5x5 Gaussian} smoothing filter.
 
