@@ -5,6 +5,7 @@
 \usepackage{multicol, caption}
 \usepackage{titlesec}
 \usepackage{graphicx}
+\usepackage[export]{adjustbox}
 
 \graphicspath{ {test-images/} }
 \usepackage{csquotes}
@@ -38,7 +39,9 @@
   {\endminipage\par\medskip}
 
 \titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
 \titlespacing*\section{0pt}{12pt plus 4pt minus 2pt}{4pt}
+\titlespacing*\section{0pt}{10pt plus 3pt minus 2pt}{3pt}
 
 \title {\vspace{-3ex}Edge detection methods for the identification of HEp-2 cell immunofluorescence in detecting anti-nuclear antibodies}
 \author {1146741 \and 1467414}
@@ -82,9 +85,22 @@ This testing suite consisted of applying the following cumulation of noise-reduc
 \end{itemize}
 
 Each edge detector was applied in turn to each low-pass filtered image to produce the results in Figure 1.
+The edge detectors used in the following test are:
 
-%\vspace{2em}
-\pagebreak
+\vspace{-0.3em}
+
+\begin{multicols*}{2}
+    \begin{itemize}[noitemsep]
+        \item Simple Gradient
+        \item Sobel
+        \item Roberts
+        \item Laplacian
+        \item F-O-Gaussian
+        \item Canny
+    \end{itemize}
+\end{multicols*}
+
+\noindent It should be noted that while the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, it was not the intended outcome of this experiment; instead a fixed threshold of \textbf{0.01} or \textbf{10\%} has been used across the board to eliminate external factors from influencing the test. The aim here was to show the relative difference in \emph{noise reduction} techniques on each single detector.
 
 \noindent
 \begin{floatfig}
@@ -263,6 +279,8 @@ Each edge detector was applied in turn to each low-pass filtered image to produc
                     (0.9109, 0.2800) % 5x5 Gaussian, 2-Pass
                 };
 
+            \addplot+[color=red, mark=x, mark size=5] coordinates { (17.44, 39.55) };
+
             %\legend{Gaussian 3x3 1-Pass, Gaussian 3x3 2-Pass, Gaussian 5x5 1-Pass, Gaussian 5x5 2-Pass}
             \draw[gray, dashed]
                 (axis cs:\pgfkeysvalueof{/pgfplots/xmin},\pgfkeysvalueof{/pgfplots/xmin}) -- 
@@ -273,9 +291,29 @@ Each edge detector was applied in turn to each low-pass filtered image to produc
 
     \vspace{-1em}
     \centering
-        \captionof{figure}{\emph{Noise filtering on edge detection\label{fig:filtergraph}}}
+        \captionof{figure}{\emph{Noise filtering on edge detection}\label{fig:filtergraph}}
     \vspace{0.6em}
 \end{floatfig}
+
+\noindent Increasing the strength and/or repitions of any of the filters used affects every detector, increasing the specificity. Applicable only to a selection of the filter-detector combinations, an increased noise-reduction has an adverse effect on the sensitivity of the image, more specifically the \emph{Laplacian} edge detector with \emph{2-Pass 5x5 Gaussian} smoothing filter.
+
+
+\begin{floatfig}
+    \centering
+        \adjincludegraphics[
+            width=\textwidth,
+            trim={{.2\width} {.3\height} {.2\width} {.3\height}},
+            clip
+        ]{diff-lapl-c1-gaus5-p2.png}
+    \captionof{figure}{\emph{The difference-image of \textbf{9343 AM.bmp} applied with 2-Pass 5x5 Gaussian and detected by Laplacian}\label{fig:diff}}
+\end{floatfig}
+
+As can be seen from Figure~\ref{fig:diff}. of the actual result and target image, there is little overlap between what was detected and what actually is an edge. Anything represented by \emph{pink} is a real edge, not detected; anything represented by \emph{green} was detected but is not a real edge.
+
+The probable main cause for this bizarre behaviour out of the Laplacian detector was the use of an overly-destructive threshold. The same test conducted but with a smaller threshold of only \textbf{2\% / 0.002} produced a closer to expected ROC value denoted by the \textcolor{red}{red X} in Figure~\ref{fig:filtergraph}.
+
+\subsection*{Noise Reduction Conclusion}
+We can conclude from the test conducted that increased smoothing filter size and/or repitition changes the outcome of the ROC, tending towards higher specificity but a lower sensitivity. This can be likened to traversing along the \emph{convex hull} towards (0, 0).
 
 \section*{Edge detection}
 
