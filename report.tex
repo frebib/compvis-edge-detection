@@ -73,7 +73,7 @@ We were provided with three bitmap images of fluorescing cells, along with separ
 
 The (original) images were first converted to grayscale in order to maximise their intensity contrast and provide us with intensity images (data matrices).This simplified the task of edge detection (i.e. identifying changes of intensity in the image) as it made the various strengths of edges more distinct. The images were then inverted to leave black cells on a white background. 
 
-\section*{Noise reduction}
+\subsection*{Noise reduction}
 
 Gaussian smoothing was then applied to the grayscale images as a method of noise reduction. This is a low-pass filtering technique and so suppresses high-frequency detail (i.e. noise, but also, potentially, edges) whilst preserving the low frequency parts of the image. This served to reduce the chances that a method of edge detection would be compromised by random or non-essential details present in the images.
 
@@ -292,7 +292,7 @@ Each edge detector was applied in turn to each low-pass filtered image to produc
 
 \noindent It should be noted that whilst the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, this was not the aim at this stage of the experiment.  The aim here was to show the relative difference in \emph{noise reduction} techniques in advance of further configuring each detection method for each image. A fixed threshold of \textbf{0.01} or \textbf{1\%} was used here.
 
-\section*{Thresholding}
+\subsection*{Thresholding}
 
 Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for ‘10905 JL Edges.bmp’, fig. 1), 9\% (for ‘43590 AM Edges.bmp’, fig. 2) and 10\% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment.
 
@@ -326,7 +326,7 @@ The probable main cause for this behaviour was the choice threshold. The same te
 \subsection*{Noise Reduction Conclusion}
 We can conclude from the tests conducted that an increased smoothing filter size and/or repitition(s) can change the outcome of the ROC analysis, tending towards higher specificity but a lower sensitivity. This can be likened to traversing along the \emph{convex hull} towards (0, 0).
 
-\section*{Edge detection}
+\subsection*{Edge detection}
 
 The various edge detection filters were then convolved with the original images. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
 
