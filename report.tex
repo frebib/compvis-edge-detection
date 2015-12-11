@@ -4,9 +4,11 @@
 \usepackage[none]{hyphenat}
 \usepackage{multicol, caption}
 \usepackage{titlesec}
-\usepackage{graphicx} 
-\graphicspath{ {test-images/} } 
-\usepackage[autostyle]{csquotes}
+\usepackage{graphicx}
+
+\graphicspath{ {test-images/} }
+\usepackage{csquotes}
+\usepackage[UKenglish,USenglish]{babel}
 
 \usepackage[dvipsnames]{xcolor}
 
@@ -41,6 +43,7 @@
 \title {\vspace{-3ex}Edge detection methods for the identification of HEp-2 cell immunofluorescence in detecting anti-nuclear antibodies}
 \author {1146741 \and 1467414}
 
+\usepackage[authoryear,sort,square,longnamesfirst]{natbib}
 
 \begin{document}
 
@@ -284,15 +287,13 @@ Finally, thresholds were determined for the processed images. This was done on a
 
 \section*{Discussion}
 
-Issues of quantitative accuracy remain pressing regarding the imaging of bioluminescent and fluorescing systems (Shelley L. Taylor, 2015). 
-The issues of how best to minimise false positives (i.e. noise) and preserve image resolution in fluorescence imaging have been explored by Dedecker et al. who are in favour of the ‘superresolution’ technique. This involves reversibly photoswitching fluorescing proteins and thereby generating a sequence of images over time. A superresolution image can then be extracted using quantitative analysis of the rate of change of fluorescence, promising an image of significantly higher resolution and with reduced noise (Peter Dedekcer, 2012) . This may have produced more favourable results in the case of IMAGE X which exhibited significant background noise and loss of resolution post-processing.
-Also of interest is bioluminescence tomography which sections the (3D) image and then reconstructs it. This is reported to produce significantly more stable (i.e. more consistent) luminescence, particularly with respect to the depth of the sample being processed, helping to accurately home-in on the source of luminescence. Given that we are concerned with serological testing, this may well be an important option to explore, opening up the possibility of 3D sampling. Bioluminescence tomography ‘…therefore has the potential to both increase the amount and the accuracy of quantitative data attained by luminescence imaging’ (James A Guggenheim, 2014).
+Issues of quantitative accuracy remain pressing regarding the imaging of bioluminescent and fluorescing systems \citep{taylor2015accounting}. 
+The issues of how best to minimise false positives (i.e. noise) and preserve image resolution in fluorescence imaging have been explored by Dedecker et al. who are in favour of the ‘superresolution’ technique. This involves reversibly photoswitching fluorescing proteins and thereby generating a sequence of images over time. A superresolution image can then be extracted using quantitative analysis of the rate of change of fluorescence, promising an image of significantly higher resolution and with reduced noise \citep{dedecker2012widely}. This may have produced more favourable results in the case of IMAGE X which exhibited significant background noise and loss of resolution post-processing.
 
-\section*{References}
+Also of interest is bioluminescence tomography which sections the (3D) image and then reconstructs it. This is reported to produce significantly more stable (i.e. more consistent) luminescence, particularly with respect to the depth of the sample being processed, helping to accurately home-in on the source of luminescence. Given that we are concerned with serological testing, this may well be an important option to explore, opening up the possibility of 3D sampling. Bioluminescence tomography ‘…therefore has the potential to both increase the amount and the accuracy of quantitative data attained by luminescence imaging’ \citep{guggenheim2013bioluminescence}.
 
-James A Guggenheim, H. R. (2014). Bioluminescence tomography improves quantitative accuracy for pre-clinical imaging. International Society for Optics and Photonics, 87990G-87990G-6.
-Peter Dedekcer, G. C. (2012). Widely accessible method for superresolution fluorescence imaging of living systems. Proceedings of the National Academy of Sciences of the United States of America, 10909-10914.
-Shelley L. Taylor, T. A. (2015). Accounting for systematic errors in bioluminescence imaging to improve quantitative accuracy. Diffuse Optical Imaging V, 10.1117/12.2183756.
+\bibliographystyle{plainnat}
+\bibliography{refs}
 
 \end{multicols*}
 
