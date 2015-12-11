@@ -72,7 +72,6 @@ Convolving the original image with a mask (also called a ‘filter’) will iden
 We were provided with three bitmap images of fluorescing cells, along with separate images of their manually detected edges. These were to act as our target edge-detection results.
 
 The (original) images were first converted to grayscale in order to maximise their intensity contrast and provide us with intensity images (data matrices).This simplified the task of edge detection (i.e. identifying changes of intensity in the image) as it made the various strengths of edges more distinct. The images were then inverted to leave black cells on a white background. 
-
 \subsection*{Noise reduction}
 
 Gaussian smoothing was then applied to the grayscale images as a method of noise reduction. This is a low-pass filtering technique and so suppresses high-frequency detail (i.e. noise, but also, potentially, edges) whilst preserving the low frequency parts of the image. This served to reduce the chances that a method of edge detection would be compromised by random or non-essential details present in the images.
@@ -390,11 +389,13 @@ Each curve represents the ROC values between thresholds of \textbf{0} and \textb
 
     \vspace{-1em}
     \centering
-        \captionof{figure}{\emph{Noise filtering on edge detection}\label{fig:filtergraph}}
+        \captionof{figure}{\emph{Noise filtering and edge detection}\label{fig:filtergraph}}
     \vspace{0.6em}
 \end{floatfig}
 
-The closest point on the unsmoothed curve is with a threshold of \textbf{0.0215} or \textbf {2.15\%}. Surprisingly the single and double pass gaussian smoothed variants have a slightly lower specificity with the 2-pass producing a significantly worse result relative to the other two.
+From Figure 3 we can see that the best results came from using a 5x5 Gaussian filter with Sobel edge-detection. Surprisingly, the same smoothing filter used with Roberts produced sub-optimal results. Additionally, the cyan line indicates the simple gradient edge detection method and proved to be the least effective.
+
+As we can see, quantitative analysis of edge-detection techniques provides a unique perspective on their efficacy, and is likely a more reliable standard by which to compare them.
 
 
 \section*{Discussion}
