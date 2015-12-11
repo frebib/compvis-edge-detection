@@ -1,3 +1,7 @@
 *.aux
 *.log
 *.swp
+
+*.bbl
+*.blg
+*-blx.bib
