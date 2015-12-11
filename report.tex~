@@ -50,7 +50,7 @@
 \noindent{\Huge Edge detection methods for the identification of HEp-2 cell immunofluorescence in detecting\linebreak anti-nuclear antibodies}
 \vspace{1em}
 
-\noindent{\large 1146741 \qquad 1467414}
+\noindent{\large 1146273 \qquad 1467414}
 \vspace{.5em}
 
 \begin{multicols*}{2}
@@ -61,7 +61,7 @@
 
 \section*{Introduction}
 
-The purpose of this experiment was to objectively assess the efficacy of different edge detectors used in immunofluorescence. The methods investigated were; simple gradient, Roberts, Sobel, first order Gaussian, Laplacian and the Laplacian of Gaussian. Application of thresholding in post- processing was used to evaluate the efficacy of each method by comparing the edge points identified with those present in the pre-edge-detected images which were provided in the laboratory environment. ROC analysis was used to determine both the sensitivity and specificity of each edge detection method. 
+The purpose of this experiment was to objectively assess the efficacy of different edge detectors used in immunofluorescence imaging. The methods investigated were; simple gradient, Roberts, Sobel, first order Gaussian, Laplacian and the Laplacian of Gaussian. Application of thresholding in post- processing was used to evaluate the efficacy of each method by comparing the edge points identified with those present in the pre-edge-detected images which had been provided in the laboratory environment. ROC analysis was used to determine both the sensitivity and specificity of each edge detection method. 
 
 Edge detection looks for changes in the intensity (i.e. brightness) of an image. The methods can be divided into two general groups: those which search for changes in the first derivative (eg gradient magnitude) and those which search for zero-crossings in the second derivative. 
 
@@ -103,7 +103,7 @@ The edge detectors used in the following test are:
     \end{itemize}
 \end{multicols*}
 
-\noindent It should be noted that while the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, it was not the intended outcome of this experiment; instead a fixed threshold of \textbf{0.01} or \textbf{10\%} has been used across the board to eliminate external factors from influencing the test. The aim here was to show the relative difference in \emph{noise reduction} techniques on each single detector.
+\noindent It should be noted that while the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, it was not the intended outcome of this experiment; instead a fixed threshold of \textbf{0.01} or \textbf{1\%} has been used across the board to eliminate external factors from influencing the test. The aim here was to show the relative difference in \emph{noise reduction} techniques on each single detector.
 
 \vspace{.6em}
 \noindent
@@ -322,6 +322,55 @@ We can conclude from the test conducted that increased smoothing filter size and
 \section*{Edge detection}
 
 The various edge detection filters were then convolved with the original images. This computed the weighted sum of pixels in the image, in both the x and y axes (directions).
+
+The following curves are those of 3 variations of \emph{10905 JL.bmp}
+
+\vspace{.6em}
+\noindent
+\begin{floatfig}
+    \resizeToWidth{
+        \begin{tikzpicture}
+            \begin{axis}[
+                xlabel={1 - Specificity \% [FPR]},
+                ylabel={Sensitivity \% [TPR]},
+                width=\pgfplotswidth * 0.9,
+                xmin=0, xmax=25,
+                ymin=75, ymax=100,
+                grid style=dashed,
+                yticklabel style={
+                    align=right,
+                    inner sep=0,
+                    xshift=-0.3em,
+                }
+            ]
+
+            \pgfplotstableread{test-images/cells2.txt}{\cellstwo}
+            \pgfplotstableread{test-images/cells2g5.txt}{\cellstwogfive}
+            \pgfplotstableread{test-images/cells2g5p2.txt}{\cellstwogfiveptwo}
+            \addplot[
+                cyan,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\cellstwo};
+            \addplot[
+                blue,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\cellstwogfive};
+            \addplot[
+                purple,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\cellstwogfiveptwo};
+            \end{axis}
+        \end{tikzpicture}
+    }{\columnwidth}
+
+    \vspace{-1em}
+    \centering
+        \captionof{figure}{\emph{Noise filtering on edge detection}\label{fig:filtergraph}}
+    \vspace{0.6em}
+\end{floatfig}
 
 \section*{Thresholding}
 
