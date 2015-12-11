@@ -289,6 +289,7 @@ Each edge detector was applied in turn to each low-pass filtered image to produc
     \vspace{0.6em}
 \end{floatfig}
 
+<<<<<<< Updated upstream
 \noindent It should be noted that whilst the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, this was not the aim at this stage of the experiment.  The aim here was to show the relative difference in \emph{noise reduction} techniques in advance of further configuring each detection method for each image. A fixed threshold of \textbf{0.01} or \textbf{1\%} was used here.
 
 \subsection*{Thresholding}
@@ -306,6 +307,9 @@ For image 9343 AM, the noisiest of the three, a sequence of noise-reduction filt
 \end{itemize}
 
 \noindent Increasing the strength and/or repition(s) of any of the smoothing filters used affected the ROC analysis of every edge detector by increasing the specificity. Applicable to only a selection of the filter-detector combinations, an increased level of noise-reduction had an adverse effect on the sensitivity of the output image, most noticeably the \emph{Laplacian} edge detector when paired with the \emph{2-Pass 5x5 Gaussian} smoothing filter.
+=======
+\noindent Increasing the strength and/or repition(s) of any of the smoothing filters used affected the ROC analysis of every edge detector by increasing the specificity. Applicable only to a selection of the filter-detector combinations, an increased level of noise-reduction has an adverse effect on the sensitivity of the output image, most noticeably the \emph{Laplacian} edge detector when paired with the \emph{2-Pass 5x5 Gaussian} smoothing filter.
+>>>>>>> Stashed changes
 
 \vspace{.4em}
 \begin{floatfig}
@@ -320,7 +324,11 @@ For image 9343 AM, the noisiest of the three, a sequence of noise-reduction filt
 
 As can be seen from Figure~\ref{fig:diff}. of the actual result vs the 'target' image, there was little overlap between what was detected and what was actually discerned to be an edge. Anything represented by \emph{pink} is a real edge, not detected; whilst anything represented by \emph{green} was detected but is not, in fact, a real edge.
 
+<<<<<<< Updated upstream
 The probable main cause for this behaviour was the choice threshold. The same test conducted with a reduced threshold of only \textbf{2\% / 0.02} produced a closer to expected ROC value denoted by the \textcolor{red}{red X} in Figure~\ref{fig:filtergraph}.
+=======
+The probable main cause for this behaviour was the choice threshold. The same test conducted with a reduced threshold of only \textbf{0.2\% / 0.002} produced a closer to expected ROC value denoted by the \textcolor{red}{red X} in Figure~\ref{fig:filtergraph}.
+>>>>>>> Stashed changes
 
 \subsection*{Noise Reduction Conclusion}
 We can conclude from the tests conducted that an increased smoothing filter size and/or repitition(s) can change the outcome of the ROC analysis, tending towards higher specificity but a lower sensitivity. This can be likened to traversing along the \emph{convex hull} towards (0, 0).
