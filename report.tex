@@ -79,7 +79,22 @@ Gaussian smoothing was then applied to the grayscale images as a method of noise
 
 We applied two one-dimensional Gaussian filters in succession, as opposed to a single two-dimensional filter, for reasons of computational efficiency. Using filters of greater dimensions acted to preserve the local area for averaging purposes. For comparison, we also applied each filter in two passes in order to compare the effectiveness of increased noise suppression against a selection of detectors.
 
-Each edge detector was applied in turn to each low-pass filtered image to produce the results in Figure 1.
+The edge detectors used in this test are:
+
+\vspace{-0.3em}
+
+\begin{multicols*}{2}
+    \begin{itemize}[noitemsep]
+        \item Gradient
+        \item Sobel
+        \item Roberts
+        \item Laplacian
+        \item First Derivative Gaussian
+        \item Canny
+    \end{itemize}
+\end{multicols*}
+
+Each edge detector was applied in turn to each low-pass filtered image to produce the results seen in Figure 1.
 
 \vspace{.6em}
 \noindent
@@ -271,24 +286,9 @@ Each edge detector was applied in turn to each low-pass filtered image to produc
 
     \vspace{-1em}
     \centering
-        \captionof{figure}{\emph{Noise filtering on edge detection\label{fig:filtergraph}}}
+        \captionof{figure}{\emph{Effects of noise filtering on edge detection\label{fig:filtergraph}}}
     \vspace{0.6em}
 \end{floatfig}
-
-The edge detectors used in this test are:
-
-\vspace{-0.3em}
-
-\begin{multicols*}{2}
-    \begin{itemize}[noitemsep]
-        \item Gradient
-        \item Sobel
-        \item Roberts
-        \item Laplacian
-        \item First Derivative Gaussian
-        \item Canny
-    \end{itemize}
-\end{multicols*}
 
 \noindent It should be noted that whilst the ROC values may not show particularly ideal \emph{Sensitivity} or \emph{Specificity} values, this was not the aim at this stage of the experiment.  The aim here was to show the relative difference in \emph{noise reduction} techniques in advance of further configuring each detection method for each image. A fixed threshold of \textbf{0.01} or \textbf{1\%} was used here.
 
