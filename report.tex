@@ -76,7 +76,7 @@ Gaussian smoothing was then applied to the grayscale images as a method of noise
 
 We applied two one-dimensional Gaussian filters in succession, as opposed to a single two-dimensional filter, for reasons of computational efficiency. Using filters of greater dimensions acted to preserve the local area for averaging purposes. For comparison, we also applied each filter in two passes in order to compare the effectiveness of increased noise suppression against a selection of detectors.
 
-This testing suite consisted of applying the following cumulation of noise-reduction filters to \enquote{9343 AM}, the noisiest of the 3 samples:
+This testing suite consisted of applying the following cumulation of noise-reduction filters to 9343 AM, the noisiest of the 3 samples:
 
 \begin{itemize}[noitemsep]
     \item No filter
@@ -321,7 +321,7 @@ The various edge detection filters were then convolved with the original images.
 
 \section*{Thresholding}
 
-Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for ‘10905 JL Edges.bmp’, fig. 1), 9\% (for ‘43590 AM Edges.bmp’, fig. 2) and 10\% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment. 
+Finally, thresholds were determined for the processed images. This was done on a case-by-case basis owing to the idiosyncrasies of each. The application of these thresholds equated to specifying which ‘edges’ were true edges (i.e. having values above the threshold) and so should be kept, and which were spurious and could be disregarded. At this stage we considered whether human evaluation of the efficacy of thresholding would be appropriate given the circumstances (i.e. carrying out eventual ROC analysis, a quantitative technique). An alternative would be to determine thresholds mathematically, for instance by hypothesising that a percentage of each image would comprise of edges and then ensuring that thresholding brought the resulting image within this range. From an analysis of the pre-edge detected images with which we had been provided we calculated the desired edge ‘content’ of the final images (post-edge detection) to be approximately 8\% (for ‘10905 JL Edges.bmp’, fig. 1), 9\% (for ‘43590 AM Edges.bmp’, fig. 2) and 10\% (for ‘9343 AM Edges.bmp’, fig. 3), respectively. We kept these approximations in mind and carried out thresholding appropriately throughout the experiment.
 
 \section*{Results}
 
