@@ -360,24 +360,30 @@ Each curve represents the ROC values between thresholds of \textbf{0} and \textb
                 }
             ]
 
-            \pgfplotstableread{test-images/cells2.txt}{\cellstwo}
-            \pgfplotstableread{test-images/cells2g5.txt}{\cellstwogfive}
-            \pgfplotstableread{test-images/cells2g5p2.txt}{\cellstwogfiveptwo}
+            \pgfplotstableread{test-images/cells2foga.txt}{\foga}
+            \pgfplotstableread{test-images/cells2robe.txt}{\robe}
+            \pgfplotstableread{test-images/cells2sobe.txt}{\sobe}
+            \pgfplotstableread{test-images/cells2grad.txt}{\grad}
             \addplot[
                 cyan,
                 x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
                 y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
-            ] table [x={x}, y={y}] {\cellstwo};
+            ] table [x={x}, y={y}] {\grad}; % Gradient with Gaussian 3x3
             \addplot[
                 blue,
                 x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
                 y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
-            ] table [x={x}, y={y}] {\cellstwogfive};
+            ] table [x={x}, y={y}] {\robe}; % Roberts with Gaussian 5x5
             \addplot[
                 purple,
                 x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
                 y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
-            ] table [x={x}, y={y}] {\cellstwogfiveptwo};
+            ] table [x={x}, y={y}] {\sobe}; % Sobel with Gaussian 5x5
+            \addplot[
+                magenta,
+                x filter/.code={\pgfmathparse{(1-#1)*100}\pgfmathresult},
+                y filter/.code={\pgfmathparse{#1*100}\pgfmathresult}
+            ] table [x={x}, y={y}] {\foga}; % First Order Gaussian
             \end{axis}
         \end{tikzpicture}
     }{\columnwidth}
